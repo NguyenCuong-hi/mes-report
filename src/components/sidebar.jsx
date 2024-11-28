@@ -15,21 +15,21 @@ const getItem = (label, key, icon, children, path) => ({
 
 });
 const items = [
-    getItem('Move In', '1', <PieChartFilled />, null, 'menu/move-in'),
-    getItem('Move Out', '2', <DesktopOutlined />, null, 'menu/move-in'),
-    getItem('Kitting', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3', null, null, '/move-in'),
-        getItem('Bill', '4', null, null, '/move-in'),
-        getItem('Alex', '5', null, null, '/move-in'),
-    ], null),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6', null, null, '/move-in'), getItem('Team 2', '8', null, null, '/move-in')], null),
-    getItem('Files', '9', <FileOutlined />, null, '/move-in'),
+    getItem('Trang chủ', '1', <PieChartFilled />, null, '/'),
+    getItem('Sản phẩm', '2', <PieChartFilled />, null, '/product'),
+    getItem('Quản lý quy trình', '3', <DesktopOutlined />, null, 'menu/move-in'),
+    getItem('Công đoạn', '4', <DesktopOutlined />, null, 'menu/move-in'),
+    getItem('Quản lý trang thiết bị', '5', <FileOutlined />, null, '/move-in'),
+    getItem('Trạng thái thiết bị', '6', <FileOutlined />, null, '/move-in'),
+    getItem('Phụ kiện', '7', <FileOutlined />, null, '/move-in'),
+    getItem('Quản lý nguyên liệu', '8', <FileOutlined />, null, '/move-in'),
+
 ];
 
 const SideBar = () => {
 
     const navigate = useNavigate();
-    const [collapsed, setCollapsed] = useState(true);
+    const [collapsed, setCollapsed] = useState(false);
 
     const onClickItem = ({ key }) => {
         const menuItem = items.find((item) => item.key === key || (item.children || []).find((child) => child.key === key));
@@ -46,22 +46,21 @@ const SideBar = () => {
 
     return (
         <>
-            <Layout style={{ minHeight: '100vh' }} >
+            <Layout style={{ minHeight: '100vh', background:'light' }} >
 
                 <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                    <Menu onClick={onClickItem} theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+                    <Menu onClick={onClickItem} theme="light" defaultSelectedKeys={['1']} mode="inline" items={items} />
                 </Sider>
 
                 <Content style={{ margin: '16px 0' }}>
                     <div
                         style={{
                             padding: 10,
-                            minHeight: 360,
+                            minHeight: '100vh',
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG,
                         }}
                     >
-                        <Outlet />
                     </div>
                 </Content>
 

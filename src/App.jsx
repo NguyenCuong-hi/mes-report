@@ -1,19 +1,16 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import AppRouter from './routing';
-import TopBar from './components/topbar';
-import SideBar from './components/sidebar';
+
 
 function App() {
   return (
     <BrowserRouter>
-      <TopBar />
-      <SideBar>
-        <AppRouter index path='/*' />
-      </SideBar>
 
-
-
-    </BrowserRouter>
+      <Routes>
+        <Route path='/*' element={<AppRouter />} />
+        <Route index path='/' />
+      </Routes>
+    </BrowserRouter >
   );
 }
 
